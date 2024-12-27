@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        .cart-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .cart-item h4, .cart-item p {
+            margin: 5px 0;
+        }
+
+        .cart-total {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <div id="cart"></div>
+    <button onclick="clearCart()">Clear Cart</button>
+<script>
+    function clearCart() {
+        localStorage.removeItem('cart');
+        location.reload(); // Reload the page to reflect changes
+    }
+</script>
+
+    <script>
+        // Retrieve cart from localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartContainer = document.getElementById('cart');
+
+        if (cart.length === 0) {
+            cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+        } else {
+            let total = 0;
+            cartContainer.innerHTML = cart
+                .map((item) => {
+                    total += item.price;
+                    return `
+                        <div class="cart-item">
+                            <h4>${item.name}</h4>
+                            <p>Price: $${item.price}</p>
+                        </div>
+                    `;
+                })
+                .join('');
+            cartContainer.innerHTML += `<p class="cart-total">Total: $${total}</p>`;
+        }
+    </script>
+</body>
+</html>

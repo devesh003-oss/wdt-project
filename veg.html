@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vegetables Grid</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .product img {
+           
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .product h3 {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .product p {
+            font-size: 14px;
+            color: #666;
+            margin: 0 10px 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;" > Vegetables Available</h1>
+<main id="main">
+    <div class="container">
+        <div class="product">
+            <img src="https://5.imimg.com/data5/EQ/LA/JW/SELLER-52718678/green-drumstick-500x500.jpg" alt="Vegetable 1">
+            <h3>Drumstick</h3>
+            <p>Rs 400.</p>  <button class="buy-now-btn" onclick="addToCart(' Product 1', 400)">Add to Cart</button> <button class="buy-now-btn" onclick="redirectToPayment('drumstick', 400)">Buy Now</button>>
+        </div>
+        <div class="product">
+            <img src="https://www.aditiprabhu.com/wp-content/uploads/2023/04/Gongura.jpeg" alt="Vegetable 2">
+            <h3>Ambadi</h3>
+            <p>Rs 200</p>  <button class="buy-now-btn" onclick="addToCart(' Product 2', 200)">Add to Cart</button> <button class="buy-now-btn" onclick="redirectToPayment('Ambadi', 200)">Buy Now</button>
+        </div>
+       
+    </div>
+  </main>
+    <script>
+        function redirectToPayment(name, price) {
+          // Save the selected product details to localStorage
+          const selectedProduct = { name, price };
+          localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
+      
+          // Redirect to the payment page
+          window.location.href = 'payment.html';
+        }
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+        function addToCart(name, price) {
+            // Add product to cart
+            cart.push({ name, price });
+    
+            // Save cart to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+    
+            alert(`${name} added to cart!`);
+        }
+      </script>
+  
+</body>
+</html>

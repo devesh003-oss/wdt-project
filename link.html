@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .fruit-container{
+     
+            grid-template-rows:200px 200px 200px 200px;
+            gap: 20px;
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+
+
+    }
+    .fruit{
+      background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.2s;
+    }
+  </style>
+</head>
+<body>
+  <div class="fruit-container">
+    <div class="fruit">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRI5Xu5ZKuvGSVj7gphLj8deO6YqgVs-3_uQ&s" alt="Apple">
+      <h3>Papaya</h3>
+      <p>Rs 400</p> <button class="buy-now-btn" onclick="addToCart('Papaya, 400)">Add to Cart</button><button class="buy-now-btn" onclick="redirectToPayment('Papaya2', 400)">Buy Now</button>
+    </div>
+    <div class="fruit">
+      <img src="https://www.bigbasket.com/media/uploads/p/xxl/10000027_32-fresho-banana-robusta.jpg" alt="Banana" height="200px">
+      <h3>Banana</h3>
+      <p>Rs 80</p><button class="buy-now-btn" onclick="addToCart('banana', 400)">Add to Cart</button> <button class="buy-now-btn" onclick="redirectToPayment(' Banana', 80)">Buy Now</button>
+    
+    <div class="fruit">
+      <img src="https://rukminim2.flixcart.com/image/850/1000/kt0enww0/plant-seed/h/h/n/25-dg-214-paudha-original-imag6fgvre6bmd5y.jpeg?q=20&crop=false" alt="Grapes" height="200px">
+      <h3>Grapes</h3>
+      <p>Rs 300</p> <button class="buy-now-btn" onclick="addToCart('grapes', 400)">Add to Cart</button><button class="buy-now-btn" onclick="redirectToPayment('product', 300)">Buy Now</button>
+    </div>
+    <div class="fruit">
+      <img src="https://www.quanta.org/orange/orange.jpg" alt="Orange" height="200px">
+      <h3>Orange</h3>
+      <p>Rs 100</p><button class="buy-now-btn" onclick="addToCart('orange', 400)">Add to Cart</button> <button class="buy-now-btn" onclick="redirectToPayment(' Orange2', 100)">Buy Now</button>
+    </div></main>
+    <script>
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    function addToCart(name, price) {
+        // Add product to cart
+        cart.push({ name, price });
+
+        // Save cart to localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        alert(`${name} added to cart!`);
+    }
+      function redirectToPayment(name, price) {
+        // Save the selected product details to localStorage
+        const selectedProduct = { name, price };
+        localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
+    
+        // Redirect to the payment page
+        window.location.href = 'payment.html';
+      }
+    </script>
+</body>
+</html>
+    

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .payment-form {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .payment-form input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .payment-form button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .payment-form button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="payment-form">
+    <h2>Payment Form</h2>
+    <div id="productDetails">
+      <!-- Product details will be dynamically added here -->
+    </div>
+    <form id="paymentForm">
+      <input type="text" id="cardNumber" placeholder="Card Number" required>
+      <input type="text" id="cardHolder" placeholder="Card Holder Name" required>
+      <input type="text" id="expiryDate" placeholder="Expiry Date (MM/YY)" required>
+      <input type="text" id="cvv" placeholder="CVV" required>
+      <button type="submit">Pay Now</button>
+    </form>
+  </div>
+
+  <script>
+    // Retrieve the selected product details from localStorage
+    const selectedProduct = JSON.parse(localStorage.getItem('selectedProduct'));
+
+    // Display the product details if available
+    const productDetailsDiv = document.getElementById('productDetails');
+    if (selectedProduct) {
+      productDetailsDiv.innerHTML = `
+        <p><strong>Product:</strong> ${selectedProduct.name}</p>
+        <p><strong>Price:</strong> Rs. ${selectedProduct.price}</p>
+      `;
+    } else {
+      productDetailsDiv.innerHTML = `<p>No product selected.</p>`;
+    }
+
+    document.getElementById('paymentForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+
+      // Simulate successful payment
+      alert('Payment successful! Redirecting...');
+
+      // Redirect to thank you page after 2 seconds
+      setTimeout(function() {
+        window.location.href = 'thank-you.html'; // Redirect to thank-you page
+      }, 2000);
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milk Products Grid</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+
+            
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .product img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .product h3 {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .product p {
+            font-size: 14px;
+            color: #666;
+            margin: 0 10px 10px;
+        }
+        .buy-now-btn {
+          background-color:rgb(56, 129, 56);
+          color: white;
+          border: none;
+          padding: 10px 15px;
+          border-radius: 4px;
+          cursor: pointer;
+          margin-top: 10px;
+        }
+    
+        .buy-now-btn:hover {
+          background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<main id="main">
+    <div class="container">
+        <div class="product">
+            <img src="https://static.toiimg.com/photo/108036977.cms" alt="Product 1">
+            <h3>Milk Product 1</h3>
+            <p>100.</p><button class="buy-now-btn" onclick="addToCart(' milk', 100)">Add to Cart</button><button class="buy-now-btn" onclick="redirectToPayment('milk', 100)">Buy Now</button>
+        </div>
+        <div class="product">
+            <img src="https://vanitascorner.com/wp-content/uploads/2019/06/Making-curd.jpg" alt="Product 2">
+            <h3>Milk Product 2</h3>
+            <p>140</p><button class="buy-now-btn" onclick="addToCart('curd', 300)">Add to Cart</button><button class="buy-now-btn" onclick="redirectToPayment('curd', 140)">Buy Now</button>
+        </div>
+        <div class="product">
+            <img src="https://www.indianveggiedelight.com/wp-content/uploads/2023/03/shrikhand-featured.jpg" alt="Product 3">
+            <h3>Milk Product 3</h3>
+            <p>300.</p><button class="buy-now-btn" onclick="addToCart('shrikhnad', 300)">Add to Cart</button>
+            <button class="buy-now-btn" onclick="redirectToPayment('shrikhnad', 300)">Buy Now</button>
+        </div>
+        <div class="product">
+            <img src="https://insanelygoodrecipes.com/wp-content/uploads/2023/05/Glasses-of-Homemade-Buttermilk-Made-from-Yogurt.jpg" alt="Product 4">
+            <h3>Milk Product 4</h3>
+            <p>.300</p><button class="buy-now-btn" onclick="addToCart('buttermilk', 300)">Add to Cart</button><button class="buy-now-btn" onclick="redirectToPayment('buttermilk', 300)">Buy Now</button>
+        </div>
+        <div class="product">
+            <img src="https://www.savoryexperiments.com/wp-content/uploads/2023/06/Butter-13.jpg" alt="Product 5">
+            <h3>Milk Product 5</h3>
+           <p>400</p> <button class="buy-now-btn" onclick="addToCart('butter', 300)">Add to Cart</button><button class="buy-now-btn" onclick="redirectToPayment('buttter', 400)">Buy Now</button>
+        </div>
+        <div class="product">
+            <img src="https://www.sharmispassions.com/wp-content/uploads/2014/12/basundi4.jpg" alt="Product 6">
+            <h3>Milk Product 6</h3>
+            <p>500</p><button class="buy-now-btn" onclick="addToCart('basundi', 300)">Add to Cart</button><button class="buy-now-btn" onclick="redirectToPayment('basundi', 500)">Buy Now</button>
+        </div>
+        <div class="product">
+            <img src="https://www.sharmispassions.com/wp-content/uploads/2012/09/homemade-paneer.jpg" alt="Product 7">
+            <h3>paneer</h3>
+            <p>.600</p><button class="buy-now-btn" onclick="addToCart(' Paneer', 300)">Add to Cart</button><button class="buy-now-btn" onclick="redirectToPayment('paneer', 600)">Buy Now</button>
+        </div>
+        
+    </div>
+  </main>
+  <script>
+    function redirectToPayment() {
+      window.location.href = 'payment.html'; // Redirect to payment page
+    }
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    function addToCart(name, price) {
+            // Add product to cart
+            cart.push({ name, price });
+    
+            // Save cart to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+    
+            alert(`${name} added to cart!`);
+        }
+  </script>
+</body>
+</html>
